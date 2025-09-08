@@ -27,13 +27,13 @@ const displaycategories =(categoris) => {
 }
 
  const loadcategorisplant= (id) => {
+  managespinner(true)
  fetch(`https://openapi.programming-hero.com/api/category/${id}`)
  .then(res => res.json())
  .then(json =>{
     Removeactiveclass();
   const Activebutton =document.getElementById(`Active-button-${id}`)
   Activebutton.classList.add("Active")
- 
     displaycategorisplant(json.plants)
  }
  ) }
@@ -63,11 +63,13 @@ const displaycategories =(categoris) => {
        </div>
   `
     AllPlantsEl.appendChild(newdiv);
+    managespinner(false);
  })
  }
 
 // all plants section js
 const Allplants = () => {
+  managespinner(true);
  fetch('https://openapi.programming-hero.com/api/plants')
  .then(res => res.json())
  .then(data => displayAllplants(data.plants)
@@ -80,6 +82,16 @@ const Allplants = () => {
 // "category": "Fruit Tree",
 // "price": 500
 // },
+
+  const managespinner = (status) => {
+    if(status == true){
+    document.getElementById("spinner").classList.remove("hidden")
+    document.getElementById("all-plants").classList.add("hidden")
+    }else{
+        document.getElementById("all-plants").classList.remove("hidden")
+    document.getElementById("spinner").classList.add("hidden")
+    }
+  }
 
 const PlantsDetails =(id) => {
  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -129,7 +141,7 @@ document.getElementById("my_modal_5").showModal();
        </div>
  `
   AllPlantsEl.appendChild(newdiv);
-    
+  managespinner(false);
  }) 
  }
 

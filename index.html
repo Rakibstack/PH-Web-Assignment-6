@@ -38,16 +38,20 @@
         <div><img src="./assets/hero-leaf2.png" alt=""></div>
     </banner-section>
 
+
     <main class="bg-[#DCFCE7] py-6  ">
         <h2 class="text-center text-2xl font-bold">Choose Your Trees</h2>
-        <div class="max-w-11/12 mx-auto mt-4 flex">
+        <div id="spinner" class="flex justify-center items-center mt-5 hidden">
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+        <div class="max-w-11/12 mx-auto  py-10 md:flex">
             <div class="mr-3">
                 <h3 class="mb-4 font-bold text-[#000000]">Categories</h3>
                   <div id="Categories-container" class="text-[#1F2937] w-36">
                 </div>
             </div>
         
-            <div id="all-plants" class="grid grid-cols-3 gap-2.5 ">
+            <div id="all-plants" class="grid md:grid-cols-3 gap-2.5 ">
    
         </div>
          <div id="Categories-plants">
