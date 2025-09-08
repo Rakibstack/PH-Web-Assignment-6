@@ -38,7 +38,9 @@ const displaycategories =(categoris) => {
  }
  ) }
 
+
  const displaycategorisplant = (plants) => {
+  
   const AllPlantsEl = document.getElementById("all-plants")
     AllPlantsEl.innerHTML = "";
  plants.forEach(plant => {
@@ -58,7 +60,7 @@ const displaycategories =(categoris) => {
       <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
       <div class=" badge-outline">${plant.price}</div>
     </div>
-    <div><button class="p-1 text-white bg-[#15803D] w-full rounded-2xl">Add to Cart</button></div>
+    <div><button onclick="addToCart('${plant.name}',${plant.price})" class="p-1 text-white bg-[#15803D] w-full rounded-2xl">Add to Cart</button></div>
   </div>
        </div>
   `
@@ -116,6 +118,39 @@ document.getElementById("my_modal_5").showModal();
   
  }
 
+  let total = 0;
+
+  const addToCart=(name,price)=> {
+    alert(`${name} has been added to the card.`)
+
+  const cardlist = document.getElementById("cart-list")
+  const div = document.createElement("div")
+  div.innerHTML = `
+      <div class="flex justify-between items-center mt-2 bg-[#F0FDF4] p-2 rounded-lg">
+             <div>
+             <h2 class="mb-[2px] font-semibold">${name}</h2>
+              <p class="text-[#1F2937]">$${price} x 1</p>
+            </div>
+            <div>
+             <button onclick="removeFromCart(this,${price})"><span class="text-red-300"><i class="fa-solid fa-xmark"></i></span></button>
+            </div>
+
+           </div>
+  `
+   cardlist.appendChild(div)
+   total += price;
+   document.getElementById("total").innerText = total;
+
+  }
+
+   const removeFromCart= (button,price) =>{
+   button.parentElement.parentElement.remove()
+   total -=price;
+   document.getElementById("total").innerText = total;
+   }
+
+  
+
  const displayAllplants = (plants) => {
  const AllPlantsEl = document.getElementById("all-plants")
   
@@ -136,7 +171,7 @@ document.getElementById("my_modal_5").showModal();
       <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
       <div class=" badge-outline">${plant.price}</div>
     </div>
-    <div><button class="p-1 text-white bg-[#15803D] w-full rounded-2xl">Add to Cart</button></div>
+    <div><button onclick="addToCart('${plant.name}',${plant.price})" class="p-1  text-white bg-[#15803D] w-full rounded-2xl">Add to Cart</button></div>
   </div>
        </div>
  `
