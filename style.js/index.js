@@ -20,7 +20,7 @@ const displaycategories =(categoris) => {
   categoris.forEach(categori =>{
   const div = document.createElement('div')
    div.innerHTML = `  
-       <button id="Active-button-${categori.id}" onclick="loadcategorisplant(${categori.id})" class="mb-2 removeactive">${categori.category_name}</button>
+       <button id="Active-button-${categori.id}" onclick="loadcategorisplant(${categori.id})" class="mb-2 removeactive ">${categori.category_name}</button>
    `
       categoriesEL.appendChild(div)
   }) 
