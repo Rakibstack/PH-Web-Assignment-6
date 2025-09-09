@@ -52,7 +52,7 @@ const displaycategories =(categoris) => {
       src="${plant.image}" class="w-full h-42 object-cover rounded-t-xl" />
   </figure>
   <div class=" space-y-3 p-3 ">
-    <h3 class="font-bold  ">
+    <h3 onclick="PlantsDetails(${plant.id})" class="font-bold  ">
      ${plant.name}
     </h3>
     <p class="font-normal text-[12px] text-[#1F2937] ">${plant.description}</p>
